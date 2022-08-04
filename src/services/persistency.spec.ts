@@ -1,10 +1,9 @@
 import { Persistency } from './persistency';
 
 describe('Persistency', () => {
-  afterEach(() => jest.clearAllMocks());
-
+  afterEach(() => jest.clearAllMocks()); //limpar mocks depois dos testes
   it('should return undefined', () => {
-    // System under test
+    //system under test
     const sut = new Persistency();
     expect(sut.saveOrder()).toBeUndefined();
   });
@@ -16,7 +15,7 @@ describe('Persistency', () => {
     expect(consoleSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should call console.log with "Pedido salvo com sucesso..."', () => {
+  it('should call console.log with Pedido salvo com sucesso...', () => {
     const sut = new Persistency();
     const consoleSpy = jest.spyOn(console, 'log');
     sut.saveOrder();

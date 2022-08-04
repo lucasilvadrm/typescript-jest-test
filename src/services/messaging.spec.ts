@@ -5,19 +5,11 @@ const createSut = () => {
 };
 
 describe('Messaging', () => {
-  afterEach(() => jest.clearAllMocks());
-
+  afterEach(() => jest.clearAllMocks()); //limpar mocks depois dos testes
   it('should return undefined', () => {
-    // System under test
+    //system under test
     const sut = createSut();
     expect(sut.sendMessage('teste')).toBeUndefined();
-  });
-
-  it('should call console.log with "Mensagem enviada:" and msg', () => {
-    const sut = createSut();
-    const consoleSpy = jest.spyOn(console, 'log');
-    sut.sendMessage('teste');
-    expect(consoleSpy).toHaveBeenCalledWith('Mensagem enviada:', 'teste');
   });
 
   it('should call console.log once', () => {
@@ -25,5 +17,12 @@ describe('Messaging', () => {
     const consoleSpy = jest.spyOn(console, 'log');
     sut.sendMessage('teste');
     expect(consoleSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call console.log with "Mensagem enviada:"and msg', () => {
+    const sut = createSut();
+    const consoleSpy = jest.spyOn(console, 'log');
+    sut.sendMessage('teste');
+    expect(consoleSpy).toHaveBeenCalledWith('Mensagem enviada:', 'teste');
   });
 });

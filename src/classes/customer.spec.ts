@@ -1,4 +1,4 @@
-import { IndividualCustomer, EnterpriseCustomer } from './customer';
+import { EnterpriseCustomer, IndividualCustomer } from './customer';
 
 const createIndividualCustomer = (
   firstName: string,
@@ -18,30 +18,25 @@ const createEnterpriseCustomer = (
 afterEach(() => jest.clearAllMocks());
 
 describe('IndividualCustomer', () => {
-  it('should have firstName, lastName and cpf', () => {
-    const sut = createIndividualCustomer('Luiz', 'Otávio', '111.111');
-    expect(sut).toHaveProperty('firstName', 'Luiz');
-    expect(sut).toHaveProperty('lastName', 'Otávio');
-    expect(sut).toHaveProperty('cpf', '111.111');
+  const sut = createIndividualCustomer('Lucas', 'Luís', '123456789');
+  it('should have fistName, lastName, cpf', () => {
+    expect(sut).toHaveProperty('firstName', 'Lucas');
+    expect(sut).toHaveProperty('lastName', 'Luís');
+    expect(sut).toHaveProperty('cpf', '123456789');
   });
 
-  it('should have methods to get name and idn for individual customers', () => {
-    const sut = createIndividualCustomer('Luiz', 'Otávio', '111.111');
-    expect(sut.getName()).toBe('Luiz Otávio');
-    expect(sut.getIDN()).toBe('111.111');
+  it('should show first name and last name', () => {
+    expect(sut.getName()).toBe('Lucas Luís');
+    expect(sut.getIDN()).toBe('123456789');
   });
 });
 
 describe('EnterpriseCustomer', () => {
+  const sut = createEnterpriseCustomer('Rchlo', '123321');
   it('should have name and cnpj', () => {
-    const sut = createEnterpriseCustomer('Udemy', '222');
-    expect(sut).toHaveProperty('name', 'Udemy');
-    expect(sut).toHaveProperty('cnpj', '222');
+    expect(sut).toHaveProperty('name', 'Rchlo');
   });
-
-  it('should have methods to get name and idn for enterprise customers', () => {
-    const sut = createEnterpriseCustomer('Udemy', '222');
-    expect(sut.getName()).toBe('Udemy');
-    expect(sut.getIDN()).toBe('222');
+  it('should have methods to get name and idn', () => {
+    expect(sut.getName()).toBe('Rchlo');
   });
 });

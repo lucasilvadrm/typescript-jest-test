@@ -10,20 +10,22 @@ const createSut = (className: new () => Discount): Discount => {
 };
 
 describe('Discount', () => {
-  afterEach(() => jest.clearAllMocks());
-
+  afterEach(() => jest.clearAllMocks()); //limpar mocks depois dos testes
   it('should have no discount', () => {
+    //system under test
     const sut = createSut(NoDiscount);
     expect(sut.calculate(10.99)).toBeCloseTo(10.99);
   });
 
   it('should apply 50% discount on price', () => {
+    //system under test
     const sut = createSut(FiftyPercentDiscount);
-    expect(sut.calculate(150.5)).toBeCloseTo(75.25);
+    expect(sut.calculate(13.12)).toBeCloseTo(6.56);
   });
 
   it('should apply 10% discount on price', () => {
+    //system under test
     const sut = createSut(TenPercentDiscount);
-    expect(sut.calculate(10)).toBeCloseTo(9);
+    expect(sut.calculate(100)).toBeCloseTo(90);
   });
 });
